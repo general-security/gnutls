@@ -246,6 +246,14 @@ static int _gnutls_gen_client_random(gnutls_session_t session)
 static int _gnutls_set_server_random(gnutls_session_t session,
 				     const version_entry_st *vers, uint8_t *rnd)
 {
+
+    for (int i = 0; i < 32; i++) {
+    	session->security_parameters.server_random[i] = (unsigned char)i;
+    }
+    _gnutls_memory_mark_defined(session->security_parameters.server_random,
+    				    GNUTLS_RANDOM_SIZE);
+    return 0;
+
 	const version_entry_st *max;
 
 	_gnutls_memory_mark_defined(session->security_parameters.server_random,
@@ -288,6 +296,16 @@ static int _gnutls_set_server_random(gnutls_session_t session,
 
 int _gnutls_gen_server_random(gnutls_session_t session, int version)
 {
+    /* my change */
+
+    for (int i = 0; i < 32; i++) {
+         session->security_parameters.server_random[i] = (unsigned char)i;
+    }
+    _gnutls_memory_mark_defined(session->security_parameters.server_random,
+                                   GNUTLS_RANDOM_SIZE);
+    return 0;
+
+
 	int ret;
 	const version_entry_st *max;
 
