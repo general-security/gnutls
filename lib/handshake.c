@@ -2418,6 +2418,7 @@ int _gnutls_send_server_hello(gnutls_session_t session, int again)
 	mbuffer_st *bufel = NULL;
 	gnutls_buffer_st buf;
 	int ret;
+	// session id len is pulled from
 	uint8_t session_id_len = session->security_parameters.session_id_size;
 	char tmpbuf[2 * GNUTLS_MAX_SESSION_ID_SIZE + 1];
 	const version_entry_st *vers;
@@ -2463,6 +2464,7 @@ int _gnutls_send_server_hello(gnutls_session_t session, int again)
 			goto fail;
 		}
 
+		// This i swhere the session ID added to the buffer
 		ret = _gnutls_buffer_append_data_prefix(
 			&buf, 8, session->security_parameters.session_id,
 			session_id_len);

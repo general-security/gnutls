@@ -1,5 +1,6 @@
 /.#configure.ac
 *~
+.idea*
 /ABOUT-NLS
 AUTHORS
 ABOUT-NLS
