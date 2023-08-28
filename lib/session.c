@@ -214,8 +214,8 @@ int gnutls_session_get_data2(gnutls_session_t session, gnutls_datum_t *data)
 int gnutls_session_get_id(gnutls_session_t session, void *session_id,
 			  size_t *session_id_size)
 {
-	session_id->size = 0;
-	session_id->data = NULL;
+//	session_id->size = 0;
+//	session_id->data = NULL;
 	return 0;
 	size_t given_session_id_size = *session_id_size;
 
