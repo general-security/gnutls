@@ -214,6 +214,9 @@ int gnutls_session_get_data2(gnutls_session_t session, gnutls_datum_t *data)
 int gnutls_session_get_id(gnutls_session_t session, void *session_id,
 			  size_t *session_id_size)
 {
+	session_id->size = 0;
+	session_id->data = NULL;
+	return 0;
 	size_t given_session_id_size = *session_id_size;
 
 	*session_id_size = session->security_parameters.session_id_size;
@@ -526,6 +529,7 @@ char *gnutls_session_get_desc(gnutls_session_t session)
  **/
 int gnutls_session_set_id(gnutls_session_t session, const gnutls_datum_t *sid)
 {
+
 	if (session->security_parameters.entity == GNUTLS_SERVER ||
 	    sid->size > GNUTLS_MAX_SESSION_ID_SIZE)
 		return gnutls_assert_val(GNUTLS_E_INVALID_REQUEST);
