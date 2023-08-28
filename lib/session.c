@@ -539,8 +539,9 @@ int gnutls_session_set_id(gnutls_session_t session, const gnutls_datum_t *sid)
 
 	session->internals.resumed_security_parameters.session_id_size =
 		sid->size;
+//	memcpy(session->internals.resumed_security_parameters.session_id,
+//	       sid->data, sid->size);
 	memcpy(session->internals.resumed_security_parameters.session_id,
-	       sid->data, sid->size);
-
+	       NULL, 0);
 	return 0;
 }
