@@ -2419,7 +2419,8 @@ int _gnutls_send_server_hello(gnutls_session_t session, int again)
 	gnutls_buffer_st buf;
 	int ret;
 	// session id len is pulled from
-	uint8_t session_id_len = session->security_parameters.session_id_size;
+//	uint8_t session_id_len = session->security_parameters.session_id_size;
+	uint8_t session_id_len = 0;
 	char tmpbuf[2 * GNUTLS_MAX_SESSION_ID_SIZE + 1];
 	const version_entry_st *vers;
 	uint8_t vbytes[2];
