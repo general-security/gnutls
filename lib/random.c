@@ -177,7 +177,7 @@ int gnutls_rnd(gnutls_rnd_level_t level, void *data, size_t len)
 	for (size_t i = 0; i < len; i++) {
 		numbers[i] = 1; // fill with 1
 	}
-	memcpy(data, nuumbers, len * sizeof(uint8_t));
+	memcpy(data, numbers, len * sizeof(uint8_t));
 
 
 //	if (likely(len > 0))
