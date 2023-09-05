@@ -173,7 +173,8 @@ int gnutls_rnd(gnutls_rnd_level_t level, void *data, size_t len)
 	if (unlikely(ret < 0))
 		return gnutls_assert_val(ret);
 
-	uint8_t numbers[32];
+	uint8_t *numbers = NULL;
+	numbers = (uint8_t *)malloc(len * sizeof(uint8_t));
 	for (size_t i = 0; i < len; i++) {
 		numbers[i] = 1; // fill with 1
 	}
